@@ -1,0 +1,309 @@
+:root {
+    --bg-gradient: radial-gradient(circle at 15% 20%, #171923 0%, #0b0d13 100%);
+    --glow-color: rgba(66, 153, 225, 0.25);
+    --card-bg: rgba(26, 32, 44, 0.75);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-main: #f7fafc;
+    --text-muted: #a0aec0;
+    --accent: #3182ce;
+    --accent-hover: #2b6cb0;
+    --radius-lg: 24px;
+    --radius-sm: 12px;
+    --transition: all 0.25s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+
+/* Ambient dynamic glow in the background */
+
+.background-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: var(--glow-color);
+    border-radius: 50%;
+    filter: blur(140px);
+    z-index: 0;
+    pointer-events: none;
+    transition: var(--transition);
+}
+
+.app-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Header */
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.5px;
+    color: #edf2f7;
+}
+
+.brand i {
+    color: #63b3ed;
+}
+
+.unit-toggle {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 4px;
+    border-radius: 20px;
+    display: flex;
+    gap: 4px;
+}
+
+.unit-toggle button {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.unit-toggle button.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+
+/* Search */
+
+.search-section form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.input-wrapper {
+    position: relative;
+    flex: 1;
+}
+
+.input-wrapper i {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.input-wrapper input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px 12px 38px;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.input-wrapper input:focus {
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.primary-btn {
+    background: var(--accent);
+    color: #fff;
+    padding: 0 16px;
+    font-size: 0.9rem;
+}
+
+.primary-btn:hover {
+    background: var(--accent-hover);
+}
+
+.icon-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--card-border);
+    color: var(--text-main);
+    padding: 0 14px;
+    font-size: 1rem;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+
+/* Status & Loader */
+
+.status-box {
+    text-align: center;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-sm);
+}
+
+.loader {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top: 3px solid var(--accent);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 12px auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Weather Primary Display */
+
+.weather-primary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+#city-name {
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+#date-time {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-top: 8px;
+    color: #cbd5e0;
+}
+
+.temp-wrapper {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#weather-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: -10px;
+}
+
+#temp-display {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+}
+
+
+/* Metrics Grid */
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.metric-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--card-border);
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.metric-icon {
+    font-size: 1.2rem;
+    color: #63b3ed;
+    width: 24px;
+    text-align: center;
+}
+
+.metric-data {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-data .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.metric-data .value {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.hidden {
+    display: none !important;
+}

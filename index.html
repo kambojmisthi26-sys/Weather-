@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyPulse | Real-Time Weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <main class="app-card">
+        <header class="app-header">
+            <div class="brand">
+                <i class="fa-solid fa-cloud-bolt"></i>
+                <span>SkyPulse</span>
+            </div>
+            <div class="unit-toggle">
+                <button id="celsius-btn" class="active" aria-label="Celsius">°C</button>
+                <button id="fahrenheit-btn" aria-label="Fahrenheit">°F</button>
+            </div>
+        </header>
+
+
+        <section class="search-section">
+            <form id="search-form">
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="city-input" placeholder="Search city..." autocomplete="off" required />
+                </div>
+                <button type="submit" class="btn primary-btn">Search</button>
+                <button type="button" id="geo-btn" class="btn icon-btn" title="Use Current Location">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                </button>
+            </form>
+        </section>
+
+        <div id="status-message" class="status-box hidden">
+            <div class="loader hidden"></div>
+            <p id="status-text"></p>
+        </div>
+
+
+        <section id="weather-display" class="weather-content hidden">
+            <div class="weather-primary">
+                <div class="location-details">
+                    <h1 id="city-name">--</h1>
+                    <p id="date-time">--</p>
+                    <span id="weather-badge" class="badge">--</span>
+                </div>
+                <div class="temp-wrapper">
+                    <img id="weather-icon" src="" alt="Condition icon" />
+                    <h2 id="temp-display">--</h2>
+                </div>
+            </div>
+
+            <!-- Detail Metrics Grid -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-solid fa-temperature-half"></i></div>
+                    <div class="metric-data">
+                        <span class="label">Feels Like</span>
+                        <span id="feels-like" class="value">--</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-solid fa-droplet"></i></div>
+                    <div class="metric-data">
+                        <span class="label">Humidity</span>
+                        <span id="humidity" class="value">--</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-solid fa-wind"></i></div>
+                    <div class="metric-data">
+                        <span class="label">Wind Speed</span>
+                        <span id="wind-speed" class="value">--</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                    <div class="metric-data">
+                        <span class="label">Pressure</span>
+                        <span id="pressure" class="value">--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
